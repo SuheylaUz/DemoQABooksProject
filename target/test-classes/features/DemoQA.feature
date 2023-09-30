@@ -1,6 +1,6 @@
 Feature: TC01_DemoQABooks
 
-  @login
+  @validCredentialLogin
   Scenario: Demo_QA_Books_Login
     Given Kullanici demoqa.com books sayfasina gider.
     And Kullanici anasayfada oldugunu dogrular.
@@ -10,6 +10,18 @@ Feature: TC01_DemoQABooks
     And Kullanici login butonuna tiklar.
     And Kullanici login oldugunu dogrular.
     Then Kullanici sayfayi kapatir.
+
+  @invalidCredentialLogin
+  Scenario: Demo_QA_Books_Invalid_Login
+    Given Kullanici demoqa.com books sayfasina gider.
+    And Kullanici anasayfada oldugunu dogrular.
+    And Kullanici login butonuna tiklar.
+    And Kullanici user name textbox alanina gecersiz username girer.
+    And Kullanici password textbox alanina gecersiz password girer.
+    And Kullanici login butonuna tiklar.
+    And Kullanici hata mesajini gorur.
+    Then Kullanici sayfayi kapatir.
+
 
   @logout
   Scenario: Demo_QA_Books_Logout

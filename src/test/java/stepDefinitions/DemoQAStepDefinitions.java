@@ -164,5 +164,18 @@ public class DemoQAStepDefinitions {
 
    }
 
+   @And("Kullanici user name textbox alanina gecersiz username girer.")
+   public void kullaniciUserNameTextboxAlaninaGecersizUsernameGirer() {
+      demoQAPage.userNameTextbox.sendKeys(ConfigReader.getProperty("invalid_user_name"));
+   }
 
+   @And("Kullanici password textbox alanina gecersiz password girer.")
+   public void kullaniciPasswordTextboxAlaninaGecersizPasswordGirer() {
+      demoQAPage.passwordTextbox.sendKeys(ConfigReader.getProperty("invalid_password"));
+   }
+
+   @And("Kullanici hata mesajini gorur.")
+   public void kullaniciHataMesajiniGorur() {
+      Assert.assertTrue(demoQAPage.hataMesaji.isDisplayed());
+   }
 }

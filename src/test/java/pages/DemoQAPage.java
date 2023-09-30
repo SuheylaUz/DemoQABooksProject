@@ -52,6 +52,11 @@ public class DemoQAPage {
     @FindBy (xpath = "//select[@aria-label='rows per page']/option")
     public List<WebElement> rowsList;
 
+    @FindBy (xpath = "//*[@id='name']")
+    public WebElement hataMesaji;
+
+
+
 
 
 
