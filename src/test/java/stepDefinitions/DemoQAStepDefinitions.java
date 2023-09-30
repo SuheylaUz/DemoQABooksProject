@@ -75,7 +75,7 @@ public class DemoQAStepDefinitions {
    @Then("Kullanici sayfayi kapatir.")
    public void kullaniciSayfayiKapatir() {
 
-      Driver.getDriver().close();
+      Driver.closeDriver();
    }
 
    @And("Kullanici search textbox alanina <{string}> yazar.")

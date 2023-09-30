@@ -6,8 +6,14 @@ import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
@@ -30,30 +36,43 @@ public class Driver {
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
                     options.setHeadless(false);
-                    options.addArguments("start-maximized"); // open Browser in maximized mode
-                    options.addArguments("disable-infobars"); // disabling infobars
-                    options.addArguments("--disable-extensions"); // disabling extensions
-                    options.addArguments("--disable-gpu"); // applicable to Windows os only
-                    options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-                    options.addArguments("--no-sandbox"); // Bypass OS security model
+                    options.addArguments("start-maximized");
+                    options.addArguments("disable-infobars");
+                    options.addArguments("--disable-extensions");
+                    options.addArguments("--disable-gpu");
+                    options.addArguments("--disable-dev-shm-usage");
+                    options.addArguments("--no-sandbox");
                     options.addArguments("--disable-in-process-stack-traces");
                     options.addArguments("--disable-logging");
                     options.addArguments("--log-level=3");
                     options.addArguments("--remote-allow-origins=*");
                     driver = new ChromeDriver(options);
                     break;
+                case "edge":
+                    WebDriverManager.edgedriver().setup();
+                    driver = new EdgeDriver();
+                    break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+                    FirefoxOptions optionsF = new FirefoxOptions();
+                    optionsF.setHeadless(false);
+                    optionsF.addArguments("start-maximized");
+                    optionsF.addArguments("disable-infobars");
+                    optionsF.addArguments("--disable-extensions");
+                    optionsF.addArguments("--disable-gpu");
+                    optionsF.addArguments("--disable-dev-shm-usage");
+                    optionsF.addArguments("--no-sandbox");
+                    optionsF.addArguments("--disable-in-process-stack-traces");
+                    optionsF.addArguments("--disable-logging");
+                    optionsF.addArguments("--log-level=3");
+                    optionsF.addArguments("--remote-allow-origins=*");
+                    driver = new FirefoxDriver(optionsF);
                     break;
-                case "opera":
-                    WebDriverManager.operadriver().setup();
-                    driver = new OperaDriver();
+                case "ie":
+                    WebDriverManager.iedriver().setup();
+                    driver = new InternetExplorerDriver();
                     break;
-                case "safari":
-                    WebDriverManager.getInstance(SafariDriver.class);
-                    driver = new SafariDriver();
-                    break;
+
             }
         }
 
